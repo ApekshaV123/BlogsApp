@@ -1,0 +1,73 @@
+.title-navbar{
+    background-color: navy ;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+}
+.title-heading-blogs{
+    font-size: 25px;
+    font-weight: bold;
+    margin-left: 40px;
+}
+.title-button-name{
+    margin-right: 20px;
+}
+.title-button-logout{
+    margin-left: 20px;
+    margin-right: 40px;
+}
+.title-name{
+    font-size: 25px;
+    font-weight: bold;
+}
+.title-form{
+    width: 70%;
+    margin: auto;
+    background-color: white;
+    border:1px solid gray;
+    box-shadow: 0 4px 8px  rgba(0,0,0,0.1);
+    margin-top: 20px;
+    padding: 10px;
+    border-radius: 7px;
+}
+.title-Description-section{
+    width: 100%;
+    border:1px solid gray;
+    box-shadow: 0 4px 8px  rgba(0,0,0,0.1);
+    border-radius: 7px;
+    padding-bottom: 100px;
+    padding-top: 10px;    
+}
+.title-description{
+    margin-left: 10px;
+}
+.title-form-button{
+    display: flex;
+    justify-content: right;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.title-cancel-button{
+    padding: 10px;
+    background-color: navy;
+    color: white;
+    border-radius: 7px;
+    border: none;
+    margin-right: 10px;
+}
+.title-save-button{
+    padding: 10px;
+    background-color: navy;
+    color: white;
+    border-radius: 7px;
+    border: none; 
+}
+.title-footer{
+    text-align:center;
+   margin-top: 255px;
+    background-color:  rgb(173, 167, 167);
+    padding: 5px;
+}
+

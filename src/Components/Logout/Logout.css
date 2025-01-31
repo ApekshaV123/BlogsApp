@@ -1,0 +1,81 @@
+.logout-navbar{
+    background-color: navy;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    align-items: center;
+}
+.logout-Blog{
+    font-size: 25px;
+    font-weight: bold;
+    margin-left: 40px;
+}
+.logout-button{
+    font-weight: bold;
+}
+.logout-button1{
+    margin-right: 40px;
+    margin-left: 20px;
+}
+.logout-button-name{
+    margin-right: 20px;
+}
+.logout-heading{
+    font-size: 35px;
+    font-weight: bold;
+}
+.logout-create-button{
+    background-color: navy;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 7px;
+}
+.logout-section{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.logout-middle-section{
+    width: 70%;
+    margin: auto;
+}
+.logout-form-section{
+    padding: 10px;
+    margin-top: 20px;
+    border:1px solid gray;
+    box-shadow: 0 4px 8px  rgba(0,0,0,0.1);
+    background-color: white;
+    border-radius: 7px;
+}
+.logout-heading-section{
+    font-size: 40px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+.logout-thumb-up-button{
+    background-color: green;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 7px;
+    margin-right: 10px;
+}
+.logout-thumb-down-button{
+    background-color: yellow;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 7px;
+}
+.logout-button2{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.logout-footer{
+    text-align: center;
+    padding: 5px;
+    background-color:  rgb(173, 167, 167);
+    margin-top: 50px;
+}
