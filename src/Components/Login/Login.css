@@ -1,25 +1,3 @@
-.login-navbar{
-    background-color: navy;
-    padding: 10px;
-    color: white;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;    
-}
-.login-header{
-    font-size: 25px;
-    font-weight: bold;
-    margin-left: 40px;
-}
-.login-form-button1{
-    font-weight: bold;
-    margin-right: 30px;
-}
-.login-form-button2{
-    font-weight: bold;
-    margin-right: 30px;
-
-}
 .login-form-section{
     width: 25%;
     margin: auto;
@@ -69,12 +47,7 @@
     margin-top: 30px;
     margin-bottom: 50px;
 }
-.login-from-footer{
-    text-align: center;
-    background-color:  rgb(173, 167, 167);
-    padding: 5px;
-    margin-top: 110px;
-}
+
 
 
 

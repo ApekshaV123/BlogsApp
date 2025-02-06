@@ -1,45 +1,44 @@
 import { useNavigate } from "react-router-dom";
 import "./Login.css"
-import Dashboard from "../Dashboard/Dashboard";
+import { useState } from "react";
 function Login() {
-    const navigate=useNavigate();
-    const registerClick2=()=>{
-        navigate("/register");
+    const [loginFormData, setLoginFormData] = useState({
+        email: "",
+        password: "",
+    });
+    const navigate = useNavigate();
+    const loginClick = () => {
+        console.log("login button clicked");
+        console.log("Login From Data:", loginFormData)
+        navigate("/blogsList");
     }
-    const loginClick2=()=>{
-        navigate("/login");
-    }
-    const DashboardClick=()=>{
-        navigate("/");
-    }
-    const LogoutClick=()=>{
-        navigate("/logout");
+    const handleEmailChange = (event) => {
+        let loginData = { ...loginFormData }
+        loginData.email = event.target.value;
+        setLoginFormData(loginData);
+    };
+    const handlePasswordChange = (event) => {
+        let loginData = { ...loginFormData }
+        loginData.password = event.target.value;
+        setLoginFormData(loginData);
     }
     return (
         <div>
-            <div className="login-navbar">
-                <div onClick={DashboardClick} className="login-header">Blogs</div>
-                <div>
-                    <span onClick={loginClick2} className="login-form-button1"></span>
-                    <span onClick={registerClick2} className="login-form-button2">Register</span>
-                </div>
-            </div>
             <div className="login-form-section">
                 <div className="login-heading">Blogs</div>
                 <div>Publish your passions, your way ...</div>
-                <hr/>
+                <hr />
                 <div className="login-heading-form">Login</div>
                 <div className="login-input-field">
-                    <label className="login-label-email" >Email id</label><br/>
-                    <input type="text" placeholder="test@gmail.com" className="login-email-input"/>
+                    <label className="login-label-email"  >Email id</label><br />
+                    <input type="text" placeholder="test@gmail.com" id="name" value={loginFormData.email} onChange={handleEmailChange} className="login-email-input" />
                 </div>
-                <div  className="login-input-field">
-                    <label className="login-label-password">Password</label><br/>
-                    <input type="text" placeholder="Test@123" className="login-password-input"/>
+                <div className="login-input-field">
+                    <label className="login-label-password">Password</label><br />
+                    <input type="text" placeholder="Test@123" id="password" value={loginFormData.password} onChange={handlePasswordChange} className="login-password-input" />
                 </div>
-                <button onClick={LogoutClick} className="login-from-button">Login</button>
+                <button onClick={loginClick} className="login-from-button">Login</button>
             </div>
-            <div className="login-from-footer">Copyright <i class="fa fa-copyright" aria-hidden="true"></i> 2022</div>
         </div>
     );
 }

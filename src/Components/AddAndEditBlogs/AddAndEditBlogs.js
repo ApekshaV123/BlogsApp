@@ -1,37 +1,44 @@
 import { Navigate, useNavigate } from "react-router-dom";
 import "./AddAndEditBlogs.css"
+import { useState } from "react";
 function AddAndEditBlogs() {
+    const [addAndEditData,setAddAndEditData]=useState({
+        title:"",
+        description:"",
+    });
     const navigate=useNavigate();
     const handleLogoutClick=()=>{
-        navigate("/login");
+        console.log("add and Edit Data:",addAndEditData);
+        navigate("/login");    
+    };
+    const handleCancelClick=()=>{
+    console.log("cancel click");
+    navigate(-1);
     }
-    const handleDashBoardClick=()=>{
-        navigate("/");
+    const handleSaveClick=()=>{
+        console.log("save click");
+        navigate("/blogsList");
+    }
+    const handleTitleChange=(event)=>{
+     let addEditData={...addAndEditData}
+     addEditData.title=event.target.value
+     setAddAndEditData(addEditData);
+    }
+    const handleDescriptionChange=(event)=>{
+        let addEditData={...addAndEditData}
+        addEditData.description=event.target.value;
+        setAddAndEditData(addEditData);
     }
     return (
         <div>
-            <div className="title-navbar">
-                <div onClick={handleDashBoardClick} className="title-heading-blogs">Blogs</div>
-                <div>
-                    <span className="title-button-name">Apeksha Vishwasrao</span>
-                    <i class="fa fa-arrow-circle-o-right" aria-hidden="true" ></i>
-                    <span onClick={handleLogoutClick} className="title-button-logout">Logout</span>
-                </div>
-            </div>
             <div className="title-form">
-                <div>
-                    <div className="title-name">Title</div>
-                </div>
-                <hr />
-                <div className="title-Description-section">
-                    <div className="title-description">Description</div>
-                </div>
+                    <input type="text" placeholder="Title" id="title" value={addAndEditData.title} onChange={handleTitleChange} className="title-name"/>
+                    <textarea className="text-description" id="description" value={addAndEditData.description} onChange={handleDescriptionChange} >Description</textarea>
                 <div className="title-form-button">
-                    <button className="title-cancel-button">Cancel</button>
-                    <button className="title-save-button">Save</button>
+                    <button  onClick={handleCancelClick} className="title-cancel-button">Cancel</button>
+                    <button onClick={handleSaveClick} className="title-save-button">Save</button>
                 </div>
-            </div>
-            <div className="title-footer">Copyright <i class="fa fa-copyright" aria-hidden="true"></i> 2022</div>
+            </div>    
         </div>
     );
 }
