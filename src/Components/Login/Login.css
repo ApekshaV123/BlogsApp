@@ -47,6 +47,18 @@
     margin-top: 30px;
     margin-bottom: 50px;
 }
+.login-error{
+    margin-top: 10px;
+    text-align: center;
+    color: red;
+}
+.invalid-input{
+    border: 1px solid red;
+}
+.login-from-button:disabled{
+    opacity: 0.5;
+    cursor: not-allowed;
+}
 
 
 

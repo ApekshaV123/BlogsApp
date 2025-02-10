@@ -1,32 +1,35 @@
 import { useNavigate } from "react-router-dom";
 import "./BlogsList.css"
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import axios from "axios";
 function BlogsList() {
-    const [blogs, setBlogs] = useState([{
-        title: "Hello World",
-        createdby: "apekshavishwasrao2002@gmail.com",
-        createdAtDate: "30 jan, 2025",
-        blogDescription: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem IpsumLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-        likes: 0,
-        disLikes: 0,
-    },
-    {
-        title: "hello world1",
-        createdby: "apekshaVishwasrao@2002gmail.com1",
-        createdAtDate: "31 jan, 2025",
-        blogDescription: "I am New",
-        likes: 0,
-        disLikes: 0,
-    }]);
+    const [blogs, setBlogs] = useState([]);
+
+    useEffect(() => {
+        axios.get("http://localhost:4000/posts").then((Response) => setBlogs(Response.data))
+    }, []);
+    
     function handlelikes(index) {
-        let tempBlogs = [...blogs];
-        tempBlogs[index].likes++;
-        setBlogs(tempBlogs);
+        axios.patch(`http://localhost:4000/posts/${blogs[index].id}`,{
+            likes:blogs[index].likes+1
+        })
+        .then(Response=>{
+            let tempBlogs=[...blogs];
+            tempBlogs[index]=Response.data
+           setBlogs(tempBlogs);
+        })
+        .catch(error => console.error('Error updating likes:',error));
     }
     function handleDisLike(index) {
-        let tempBlogs = [...blogs];
-        tempBlogs[index].disLikes++;
-        setBlogs(tempBlogs);
+        axios.patch(`http://localhost:4000/posts/${blogs[index].id}`,{
+            disLikes:blogs[index].disLikes+1
+        })
+        .then(Response=>{
+            let tempBlogs=[...blogs];
+             tempBlogs[index]=Response.data
+             setBlogs(tempBlogs);
+        })
+        .catch(error => console.error('Error updating disLikes:',error));  
     }
     const navigate = useNavigate();
     const createtClick = () => {
@@ -53,7 +56,7 @@ function BlogsList() {
                         <div>{singleBlog.blogDescription}</div>
                         <div className="logout-button2">
                             <button className="thumb-up-button" onClick={() => handlelikes(index)}><i class="fa fa-thumbs-up" aria-hidden="true"></i> {singleBlog.likes}</button>
-                            <button className="thumb-down-button" onClick={()=>handleDisLike(index)}><i class="fa fa-thumbs-down" aria-hidden="true"></i>{singleBlog.disLikes}</button>
+                            <button className="thumb-down-button" onClick={() => handleDisLike(index)}><i class="fa fa-thumbs-down" aria-hidden="true"></i>{singleBlog.disLikes}</button>
                         </div>
                     </div>
                 })}
