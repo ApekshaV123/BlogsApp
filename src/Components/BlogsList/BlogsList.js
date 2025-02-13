@@ -4,34 +4,49 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 function BlogsList() {
     const [blogs, setBlogs] = useState([]);
+    const navigate = useNavigate();
+    const LoggedEmail = localStorage.getItem("email");
+    console.log("logged Email:", LoggedEmail);
+
 
     useEffect(() => {
-        axios.get("http://localhost:4000/posts").then((Response) => setBlogs(Response.data))
+        getBlogsData();
     }, []);
-    
-    function handlelikes(index) {
-        axios.patch(`http://localhost:4000/posts/${blogs[index].id}`,{
-            likes:blogs[index].likes+1
-        })
-        .then(Response=>{
-            let tempBlogs=[...blogs];
-            tempBlogs[index]=Response.data
-           setBlogs(tempBlogs);
-        })
-        .catch(error => console.error('Error updating likes:',error));
+    const getBlogsData = () => {
+        axios.get("http://localhost:4000/posts").then((Response) => setBlogs(Response.data))
     }
-    function handleDisLike(index) {
-        axios.patch(`http://localhost:4000/posts/${blogs[index].id}`,{
-            disLikes:blogs[index].disLikes+1
+    function handlelikes(blogId, likeCount) {
+        axios.patch(`http://localhost:4000/posts/${blogId}`, {
+            likes: likeCount + 1
         })
-        .then(Response=>{
-            let tempBlogs=[...blogs];
-             tempBlogs[index]=Response.data
-             setBlogs(tempBlogs);
-        })
-        .catch(error => console.error('Error updating disLikes:',error));  
+            .then(Response => {
+                getBlogsData();
+            })
+            .catch(error => console.error('Error updating likes:', error));
     }
-    const navigate = useNavigate();
+    function handledisLike(blogId, dislikesCount) {
+        axios.patch(`http://localhost:4000/posts/${blogId}`, {
+            disLikes: dislikesCount + 1
+        })
+            .then(Response => {
+                getBlogsData();
+            })
+            .catch(error => console.error('Error updating disLikes:', error));
+    }
+    function handleEditButton(blogId) {
+        navigate(`/addAndEditBlogs/${blogId}`);
+    }
+    function handleDeleteButton(blogId) {
+        if (blogs.length === 1 || blogId === 1) {
+            console.error(` error: first past is not deleted. `);
+            return;
+        }
+        axios.delete(`http://localhost:4000/posts/${blogId}`)
+            .then(Response => {
+                getBlogsData();
+            })
+            .catch(error => console.error(`Error deleting blogs:`, error))
+    }
     const createtClick = () => {
         navigate("/AddAndEditBlogs");
     }
@@ -50,16 +65,29 @@ function BlogsList() {
                     console.log('singleBlog:', singleBlog)
                     return <div className="logout-form-section">
                         <div className="logout-heading-section"> {singleBlog.title}</div>
-                        <div><strong>Created By</strong> <em>{singleBlog.createdby}</em> </div>
+                        <div><strong>Created By</strong> <em>{singleBlog.createdBy}</em> </div>
                         <div><strong>Created At</strong> <em>{singleBlog.createdAtDate}</em> </div>
                         <hr />
-                        <div>{singleBlog.blogDescription}</div>
-                        <div className="logout-button2">
-                            <button className="thumb-up-button" onClick={() => handlelikes(index)}><i class="fa fa-thumbs-up" aria-hidden="true"></i> {singleBlog.likes}</button>
-                            <button className="thumb-down-button" onClick={() => handleDisLike(index)}><i class="fa fa-thumbs-down" aria-hidden="true"></i>{singleBlog.disLikes}</button>
+                        <div>{singleBlog.description}</div>
+                        <div className="buttons">
+                            <div className="logout-button2">
+                                <button className="thumb-up-button" onClick={() => handlelikes(singleBlog.id, singleBlog.likes)}><i class="fa fa-thumbs-up" aria-hidden="true"></i> {singleBlog.likes}</button>
+                                <button className="thumb-down-button" onClick={() => handledisLike(singleBlog.id, singleBlog.disLikes)}><i class="fa fa-thumbs-down" aria-hidden="true"></i>{singleBlog.disLikes}</button>
+                            </div>
+                            <div>
+                                {singleBlog.createdBy === LoggedEmail && (
+                                    <>
+                                        <button className="edit-button" onClick={() => handleEditButton(singleBlog.id)} ><i class="fa fa-pencil" aria-hidden="true"></i> Edit</button>
+                                        <button className={`delete-button ${blogs.length === 1 ? 'disabled' : ''}`}
+                                            disabled={blogs.length === 1} onClick={() => handleDeleteButton(singleBlog.id)}><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>
+                                    </>
+                                )}
+                            </div>
+
                         </div>
                     </div>
                 })}
+
             </div>
         </div>
     );

@@ -16,7 +16,8 @@ function App() {
         <Route path='/register' element={<Register/>}/>
         <Route path='/login' element={<Login/>}/>
         <Route path='/blogsList' element={<BlogsList/>}/>
-        <Route path='/addAndEditBlogs' element={<AddAndEditBlogs/>} />
+        <Route path='/addAndEditBlogs/:id?' element={<AddAndEditBlogs/>} />
+
       </Routes>
       <Footer/>
     </Router>  

@@ -1,66 +1,34 @@
 {
   "posts": [
     {
-      "id": "1",
-      "title": "Hello World",
-      "createdby": "apekshavishwasrao2002@gmail.com",
-      "createdAtDate": "30 jan, 2025",
-      "blogDescription": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem IpsumLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-      "likes": 25,
-      "disLikes": 63
+      "id": "0b9d",
+      "title": "Lorem ipsum",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      "createdBy": "apekshavishwasrao2002@gmail.com",
+      "likes": 8,
+      "disLikes": 8
     },
     {
-      "id": "2",
-      "title": "hello world1",
-      "createdby": "apekshaVishwasrao@2002gmail.com1",
-      "createdAtDate": "31 jan, 2025",
-      "blogDescription": "I am New",
-      "likes": 0,
-      "disLikes": 0
+      "id": "cb2f",
+      "title": "Indian Army responds after Pakistan violates ceasefire in Jammu and Kashmir: Report",
+      "description": "Indian security officials said that the Army gave a befitting response after Pakistani troops on Wednesday violated the ceasefire. The enemy troops resorted to unprovoked firing on Indian posts along the Line of Control (LoC) in Poonch district of Jammu and Kashmir, India-based news agency PTI reported. ",
+      "createdBy": "kadamnik68@gmail.com",
+      "likes": 5,
+      "disLikes": 12
     }
   ],
   "users": [
     {
-      "id": "1",
-      "name": "asdfghj",
-      "email": "edrfgthj",
-      "password": "qwertyui"
-    },
-    {
-      "id": "2",
-      "name": "a",
-      "email": "ww",
-      "password": "ww"
-    },
-    {
-      "id": "3",
-      "name": "2",
-      "email": "ww",
-      "password": "ww"
-    },
-    {
-      "id": "4",
-      "name": "2",
-      "email": "ww",
-      "password": "ww"
-    },
-    {
-      "id": 5,
-      "name": "Ishwari Kanase",
-      "email": "ishwari.kanase@gmail.com",
+      "id": "3eb7",
+      "name": "Apeksha Vishwasrao",
+      "email": "apekshavishwasrao2002@gmail.com",
       "password": "Test123"
     },
     {
-      "id": 6,
-      "name": "nnnn",
-      "email": "apekshavishwasrao2002@gmail.com",
-      "password": "ddd"
-    },
-    {
-      "id": 7,
-      "name": "apeksha",
-      "email": "test@gmail.com",
-      "password": "ddd"
+      "id": "88b2",
+      "name": "Nikita Kadam",
+      "email": "kadamnik68@gmail.com",
+      "password": "Test123"
     }
   ]
 }

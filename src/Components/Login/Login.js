@@ -13,11 +13,9 @@ function Login() {
         password: "",
     });
     const [users, setUsers] = useState([]);
-
     useEffect(() => {
         axios.get("http://localhost:4000/users").then((Response) => setUsers(Response.data))
     }, []);
-
     const navigate = useNavigate();
     const loginClick = () => {
         let errorMessage = { email: "", password: "" };
@@ -39,6 +37,7 @@ function Login() {
             console.log('foundUser: ', foundUser);
             if (!_.isEmpty(foundUser)) {
                 if (foundUser.password === loginFormData.password) {
+                    localStorage.setItem('email',foundUser.email)
                     navigate("/blogsList");
                 } else {
                     errorMessage.password = "Incorrect password";

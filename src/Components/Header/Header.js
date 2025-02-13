@@ -1,28 +1,41 @@
 
 import { useNavigate } from "react-router-dom";
 import "./Header.css"
-function Header(){
-    const navigate=useNavigate();
-    const handleBlogsClick=()=>{
+import { useEffect } from "react";
+function Header() {
+    const navigate = useNavigate();
+    const LoggedEmail = localStorage.getItem("email");
+    console.log("logged Email:", LoggedEmail);
+    const handleBlogsClick = () => {
         navigate("/");
     }
-    const handleLoginClick=()=>{
+    const handleLoginClick = () => {
         navigate("/login");
     }
-    const handleRegisterClick=()=>{
+    const handleRegisterClick = () => {
         navigate("/register");
     }
-
-
-    return(
+    const handleLogoutClick = () => {
+        localStorage.removeItem("email");
+        navigate("/login");
+    }
+    return (
         <div className="blogs-navbar">
             <div className="blogs-heading" onClick={handleBlogsClick}>Blogs</div>
             <div>
-                <span className="blogs-button" onClick={handleLoginClick}>Login</span>
-                <span className="blogs-button" onClick={handleRegisterClick}>Register</span>
+                {LoggedEmail ? (
+                    <>
+                        <span className="blogs-button">{LoggedEmail}</span>
+                        <span onClick={handleLogoutClick} className="blogs-button">logout</span>
+                    </>
+                ) : (
+                    <>
+                        <span className="blogs-button" onClick={handleLoginClick}>Login</span>
+                        <span className="blogs-button" onClick={handleRegisterClick}>Register</span>
+                    </>
+                )}
             </div>
         </div>
     );
-
 }
 export default Header;

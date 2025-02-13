@@ -35,15 +35,14 @@ function Register() {
         }
         else {
             const newUserData = {
-                ...formData,
-                id: users.length + 1,
+                ...formData,   
             };
             let existingUser = {};
             users.map((user) => {
                 console.log('user: ', user);
                 console.log('newUserData: ', newUserData);
                 if (user.email === newUserData.email) {
-                    existingUser = user;
+                    existingUser = user;   
                 }
             })
             console.log('existingUser: ', existingUser);
@@ -58,11 +57,9 @@ function Register() {
                     });
             } else {
                 errorMsg.email = "User already exists!";
-
             }
         };
         setError(errorMsg);
-
     }
     const handleChange = (event) => {
         const { id, value } = event.target;
